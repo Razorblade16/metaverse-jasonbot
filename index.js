@@ -15,10 +15,12 @@ app.listen(app.get('port'));
 
 app.use(bodyParser.json());
 
+/**
 app.get('/', function(req, res) {
   console.log(req);
   res.send('It works!');
 });
+*/
 
 app.get('/', function (req, res) {
   if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
