@@ -1,0 +1,13 @@
+{
+  "name": "metaverse-jasonbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {"start": "node index.js"},
+  "keywords": [],
+  "author": "Jason Jones",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*"
+	}
+}
