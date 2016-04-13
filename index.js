@@ -43,7 +43,7 @@ app.post('/', function (req, res) {
   res.sendStatus(200);
 });
 
-var token = "<page_access_token>";
+var token = "EAAPzVVlDsyUBANmDGG0zBIPyuZBeSlj3PpHsI61nNiQY6MV5svGF4JZBfvgBwJUgYroFYbp6BDaJtjk6KaYftX1ewEO9uRalHCYipweNJZCEIdfyc5ZCI5Yr1SxnhQQYacXfRsY6dipNZA6kmz5LlmZAiOrBpQZBQ4QohcdzWAl1gZDZD";
 
 function sendTextMessage(sender, text) {
   messageData = {
