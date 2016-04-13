@@ -12,6 +12,7 @@ var app = express();
 
 var token = "EAAPzVVlDsyUBANmDGG0zBIPyuZBeSlj3PpHsI61nNiQY6MV5svGF4JZBfvgBwJUgYroFYbp6BDaJtjk6KaYftX1ewEO9uRalHCYipweNJZCEIdfyc5ZCI5Yr1SxnhQQYacXfRsY6dipNZA6kmz5LlmZAiOrBpQZBQ4QohcdzWAl1gZDZD";
 
+/**
 function sendTextMessage(sender, text) {
   messageData = {
     text:text
@@ -32,6 +33,7 @@ function sendTextMessage(sender, text) {
     }
   });
 }
+*/
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -60,7 +62,7 @@ app.post('/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       // Handle a text message from this sender
-	  sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+	  // sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
     }
   }
   res.sendStatus(200);
