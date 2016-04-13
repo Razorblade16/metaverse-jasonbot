@@ -10,6 +10,29 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
+var token = "EAAPzVVlDsyUBANmDGG0zBIPyuZBeSlj3PpHsI61nNiQY6MV5svGF4JZBfvgBwJUgYroFYbp6BDaJtjk6KaYftX1ewEO9uRalHCYipweNJZCEIdfyc5ZCI5Yr1SxnhQQYacXfRsY6dipNZA6kmz5LlmZAiOrBpQZBQ4QohcdzWAl1gZDZD";
+
+function sendTextMessage(sender, text) {
+  messageData = {
+    text:text
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
+
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
 
@@ -42,28 +65,5 @@ app.post('/', function (req, res) {
   }
   res.sendStatus(200);
 });
-
-var token = "EAAPzVVlDsyUBANmDGG0zBIPyuZBeSlj3PpHsI61nNiQY6MV5svGF4JZBfvgBwJUgYroFYbp6BDaJtjk6KaYftX1ewEO9uRalHCYipweNJZCEIdfyc5ZCI5Yr1SxnhQQYacXfRsY6dipNZA6kmz5LlmZAiOrBpQZBQ4QohcdzWAl1gZDZD";
-
-function sendTextMessage(sender, text) {
-  messageData = {
-    text:text
-  }
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
-    method: 'POST',
-    json: {
-      recipient: {id:sender},
-      message: messageData,
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-  });
-}
 
 app.listen();
